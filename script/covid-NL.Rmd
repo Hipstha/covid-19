@@ -296,7 +296,7 @@ ggplot(as.data.frame(sexo)) +
            stat="count", position="dodge") +
   theme(plot.title = element_text(hjust = 0.5),
         axis.text.x = element_text(angle = 90)) +
-  labs(x = "Estado",
+  labs(x = "Municipio",
        y="Casos positivos") +
   ggtitle("Presencia de Covid-19 en los diferentes municipios de Nuevo León")
 ```
