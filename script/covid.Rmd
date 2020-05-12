@@ -29,7 +29,7 @@ library(fpc)
 ```{r cargaDatos, include=FALSE}
 
 #data -------------------------------------------------------------------------------------------
-data <- read.csv('../data/covid07052020.csv', stringsAsFactors = F)
+data <- read.csv('../data/covid10052020.csv', stringsAsFactors = F)
 meta <- read.csv('../data/meta.csv', stringsAsFactors = F)
 columns <- read.csv('../data/util2.csv', header = F)
 data_entidad_um <- read.csv("../data/entidad_um.csv", header = F, stringsAsFactors = F)
@@ -256,7 +256,8 @@ def_date <- def_date[def_date$Var1 < "2020-05-2",]
 
 ```
 
-# Última actualización: 8/5/2020
+# Última actualización: 11/5/2020
+# Fecha de últimos datos capturados: 10/5/2020
 
 ## Introducción
 
@@ -276,7 +277,7 @@ kable(meta)
 
 ## Presentación de resultados
 
-### Pacientes positivos a COVID-19: **26,616**
+### Pacientes positivos a COVID-19: **35,022**
 
 Los estados que presentan un mayor número de contagios, de mayor a menor son:
 
@@ -290,7 +291,7 @@ Los estados que presentan un menor número de contagios, de menor a mayor son:
 2. Durango.
 3. Zacatecas.
 
-```{r generacionGraficosEntidad, echo=FALSE}
+```{r generacionGraficosEntidad, message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw()+
   geom_bar(aes(x=entidad_res), fill = "#619DFF",
@@ -304,7 +305,7 @@ ggplot(as.data.frame(sexo)) +
 
 Gracias a la siguiente gráfica podemos interpretar que se ha presentado un mayor número de contagios en hombres.
 
-```{r generacionGraficosSexo, echo=FALSE}
+```{r generacionGraficosSexo, message=FALSE,echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=sexo),
@@ -327,7 +328,7 @@ Las instituciones de salud que mayor apoyo han brindado han sido:
 2. IMSS.
 3. ISSSTE (teniendo una menor presencia que los anteriores).
 
-```{r generacionGraficosSector, echo=FALSE}
+```{r generacionGraficosSector, message=FALSE,echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=sector),
@@ -346,7 +347,7 @@ ggplot(as.data.frame(sexo)) +
 
 La vigilancia centinela se realiza a través del sistema de unidades de salud monitoras de enfermedades respiratorias (USMER). Las USMER incluyen unidades médicas del primer, segundo o tercer nivel de atención y también participan como USMER las unidades de tercer nivel que por sus características contribuyen a ampliar el panorama de información epidemiológica, entre ellas las que cuenten con especialidad de neumología, infectología o pediatría.
 
-```{r generacionGraficosOrigen, echo=FALSE}
+```{r generacionGraficosOrigen, message=FALSE,echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=origen),
@@ -364,13 +365,13 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Vigilancia centinela realizada")
 ```
 
-La gráfica que representa el rango de edad nos demuestra que de los pacientes de 11 a 20 años a los de 21 a 30 años hay un considerable aumento del 804% en hombres y del 745% en mujeres, podemos asumir que se debe a que los jóvenes de estas edades por lo general son estudiantes y/o trabajadores que suelen moverse comunmente en transportes públicos, lo que genera un potente riesgo de contagio.
+La gráfica que representa el rango de edad nos demuestra que de los pacientes de 11 a 20 años a los de 21 a 30 años hay un considerable aumento del 807% en hombres y del 712% en mujeres, podemos asumir que se debe a que los jóvenes de estas edades por lo general son estudiantes y/o trabajadores que suelen moverse comunmente en transportes públicos, lo que genera un potente riesgo de contagio.
 
-Otro punto interesante es el siguiente aumento de personas con rangos de edades de 31 a 60 años, representando un aumento con respecto a los jóvenes, del 182% en hombres y del 166% en mujeres, además de representar un decremento con respecto a las personas de la tercera edad del 168% en hombres y del 165% en mujeres. 
+Otro punto interesante es el siguiente aumento de personas con rangos de edades de 31 a 60 años, representando un aumento con respecto a los jóvenes, del 181% en hombres y del 165% en mujeres, además de representar un decremento con respecto a las personas de la tercera edad del 231% en hombres y del 208% en mujeres. 
 
 Podemos asumir que dichos incrementos se deben a que muchos jóvenes han podido resguardarse estudiando y/o trabajando desde casa a diferencia de muchos adultos que deben trabajar en planta.
 
-```{r generacionGraficosEdad, echo=FALSE}
+```{r generacionGraficosEdad, message=FALSE,echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=edad),
@@ -389,7 +390,7 @@ ggplot(as.data.frame(sexo)) +
 
 ## Las siguientes gráficas presentan complicaciones médicas que presentaron los pacientes.
 
-```{r generacionGraficosIntubado, echo=FALSE}
+```{r generacionGraficosIntubado,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=intubado),
@@ -406,7 +407,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que han requerido intubación")
 ```
 
-```{r generacionGraficosNeumonia, echo=FALSE}
+```{r generacionGraficosNeumonia,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=neumonia),
@@ -423,7 +424,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron neumonía")
 ```
 
-```{r generacionGraficosEmbarazo, echo=FALSE}
+```{r generacionGraficosEmbarazo,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(mujeres)) +
   theme_bw() +
   geom_bar(aes(x=mujeres, fill=embarazo),
@@ -440,7 +441,7 @@ ggplot(as.data.frame(mujeres)) +
   ggtitle("Pacientes que presentaron embarazo")
 ```
 
-```{r generacionGraficosDiabetes, echo=FALSE}
+```{r generacionGraficosDiabetes,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=diabetes),
@@ -457,7 +458,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron diabetes")
 ```
 
-```{r generacionGraficosEpoc, echo=FALSE}
+```{r generacionGraficosEpoc,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=epoc),
@@ -478,7 +479,7 @@ ggplot(as.data.frame(sexo)) +
 **NOTA**
 Se puede observar que en mujeres hay mayor probabilidad de presentar asma que en hombres.
 
-```{r generacionGraficosAsma, echo=FALSE}
+```{r generacionGraficosAsma,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=asma),
@@ -495,7 +496,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron asma")
 ```
 
-```{r generacionGraficosInmuno, echo=FALSE}
+```{r generacionGraficosInmuno,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=inmuno),
@@ -512,7 +513,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron inmunosupresión")
 ```
 
-```{r generacionGraficosHiper, echo=FALSE}
+```{r generacionGraficosHiper,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=hiper),
@@ -532,7 +533,7 @@ ggplot(as.data.frame(sexo)) +
 **NOTA**
 Se puede observar que en mujeres hay mayor probabilidad de presentar otras complicaciones médicas diagnosticadas.
 
-```{r generacionGraficosOtrasComp, echo=FALSE}
+```{r generacionGraficosOtrasComp,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=otras_comp),
@@ -550,7 +551,7 @@ ggplot(as.data.frame(sexo)) +
 
 ```
 
-```{r generacionGraficosCardio, echo=FALSE}
+```{r generacionGraficosCardio,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=cardio),
@@ -568,7 +569,7 @@ ggplot(as.data.frame(sexo)) +
 
 ```
 
-```{r generacionGraficosObesidad, echo=FALSE}
+```{r generacionGraficosObesidad,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=obesidad),
@@ -585,7 +586,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron obesidad")
 ```
 
-```{r generacionGraficosRenal, echo=FALSE}
+```{r generacionGraficosRenal,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=renal),
@@ -602,7 +603,7 @@ ggplot(as.data.frame(sexo)) +
   ggtitle("Pacientes que presentaron insuficiencia renal crónica")
 ```
 
-```{r generacionGraficosTabaquismo, echo=FALSE}
+```{r generacionGraficosTabaquismo,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=tabaquismo),
@@ -625,7 +626,7 @@ Podemos observar que en mujeres presentarón un mayor número de contagios por i
 
 En caso de los hombres, es más notable la diferencia de quienes afirmaron no haber tenido contacto con personas infectadas a diferencia de quienes afirmaron haberlo tenido.
 
-```{r generacionGraficosOtroCaso, echo=FALSE}
+```{r generacionGraficosOtroCaso,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=otro_caso),
@@ -643,7 +644,7 @@ ggplot(as.data.frame(sexo)) +
           algún otro caso diagnosticado con SARS CoV-2")
 ```
 
-```{r generacionGraficosUci, echo=FALSE}
+```{r generacionGraficosUci,message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo)) +
   theme_bw() +
   geom_bar(aes(x=sexo, fill=uci),
@@ -665,7 +666,7 @@ La siguiente gráfica presenta el número de pacientes registrados como positivo
 
 Podemos observar que a partir de marzo (Fecha en que inicia la cuarentena) los números han ido subiendo de una manera significativa, siendo a mediados de abril el pico más alto de contagios por día.
 
-```{r generacionGraficosInfectados, echo=FALSE}
+```{r generacionGraficosInfectados,message=FALSE, echo=FALSE}
 ggplot(sint_date, aes(Var1, Freq)) +
   geom_line(aes(color="Red"), size=1) +
   theme(plot.title = element_text(hjust = 0.5),
@@ -679,7 +680,7 @@ ggplot(sint_date, aes(Var1, Freq)) +
 La siguiente gráfica representa la cantidad de personas que han fallecido por día debido a COVID-19.
 Podemos observar que el número de muertes va en aumento.
 
-```{r generacionGraficosMuertes, echo=FALSE}
+```{r generacionGraficosMuertes,message=FALSE, echo=FALSE}
 ggplot(def_date, aes(Var1, Freq)) +
   geom_line(aes(color="Red"), size=1) +
   theme(plot.title = element_text(hjust = 0.5),
@@ -692,7 +693,7 @@ ggplot(def_date, aes(Var1, Freq)) +
 
 De la siguiente gráfica podemos interpretar que la enfermedad es más letal en personas de 41 a 70 años, siendo estos quienes mayor número de bajas presentan.
 
-```{r generacionGraficosEdadMuerte, echo=FALSE}
+```{r generacionGraficosEdadMuerte, message=FALSE, echo=FALSE}
 ggplot(as.data.frame(sexo_def2)) +
   theme_bw() +
   geom_bar(aes(x=sexo_def2, fill=edad_def),
@@ -736,13 +737,13 @@ set.seed(1)
 
 submt <- kmeans(data.resc, centers=1)$withinss
 for(i in 2:10) submt[i] <- kmeans(data.resc, centers=i)$withinss
-clarafit <- clara(data.resc, 4, samples = 1000)
+clarafit <- clara(data.resc, 5, samples = 1000)
 ```
 
 ```{r graficoElbow, echo=FALSE}
 plot(1:10, submt, type="b", xlab="Número de clusters", ylab="Diferencias entre elementos de cada grupo",
      main="Identificación de número óptimo de clusters")
-abline(v = 4, col="blue", lty=2)
+abline(v = 5, col="blue", lty=2)
 ```
 
 La siguiente gráfica representa la separación de pacientes por grupos.
@@ -846,7 +847,7 @@ names(df) <- c("Origen",
 
 df <- as.data.frame(t(df))
 
-names(df) <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4")
+names(df) <- c("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4", "Cluster 5")
 ```
 
 La siguiente tabla describe los patrones presentados
